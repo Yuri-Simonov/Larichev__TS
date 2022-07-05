@@ -1,11 +1,10 @@
 "use strict";
-const str1 = "1";
-const str2 = "2";
-function funcTs(a, b) {
-    return a + b;
-}
-const funcTsArrow = (a, b) => {
-    return a + b;
+const user = {
+    name: "Yuri",
+    surname: "Simonov",
+    age: "26",
 };
-console.log(funcTs(str1, str2));
-console.log(funcTsArrow(str1, str2));
+function getFullName(userEntities) {
+    console.log("user", userEntities.name, userEntities.surname);
+}
+getFullName(user);

@@ -1,13 +1,10 @@
-const str1 = "1";
-const str2 = "2";
-
-function funcTs(a: string, b: string): string {
-	return a + b;
-}
-
-const funcTsArrow = (a: string, b: string): string => {
-	return a + b;
+const user = {
+	name: "Yuri",
+	surname: "Simonov",
+	age: "26",
 };
 
-console.log(funcTs(str1, str2));
-console.log(funcTsArrow(str1, str2));
+function getFullName(userEntities: { name: string; surname: string }) {
+	console.log("user", userEntities.name, userEntities.surname);
+}
+getFullName(user);
