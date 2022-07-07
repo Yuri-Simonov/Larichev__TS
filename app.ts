@@ -1,7 +1,4 @@
-const someArr: string[] = ["a", "b"];
+const someTuple: [number, string, ...boolean[]] = [1, "2", true];
 
-const res = someArr.map((i: string) => {
-	return i + "?";
-});
-
-console.log("res", res);
+const [num, str] = someTuple;
+console.log(num, str);

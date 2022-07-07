@@ -1,6 +1,4 @@
 "use strict";
-const someArr = ["a", "b"];
-const res = someArr.map((i) => {
-    return i + "?";
-});
-console.log("res", res);
+const someTuple = [1, "2"];
+const [num, str] = someTuple;
+console.log(num, str);
