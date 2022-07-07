@@ -1,6 +1,10 @@
-const someTuple: readonly [number, string] = [1, "2"];
+enum StatusCode {
+	success,
+	in_process,
+	failed,
+}
 
-// someTuple.push(2);
-
-const [num, str] = someTuple;
-console.log(num, str);
+const res = {
+	message: "Платеж прошел успешно!",
+	status: StatusCode.success,
+};
