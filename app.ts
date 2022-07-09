@@ -1,24 +1,8 @@
-function narr(id: string | number | boolean) {
-	if (typeof id === "string") {
-		console.log(id, " = string");
-	} else {
-		console.log(id, " = number | boolean");
-	}
+function literalType(url: string, method: "post" | "get") {
+	console.log(url, method);
 }
+literalType("http://...", "post");
 
-function logObject(obj: { a: number } | { b: number }) {
-	if ("a" in obj) {
-		console.log(obj.a);
-	} else {
-		console.log(obj.b);
-	}
-}
+let method = "post";
 
-function multiple(a: string | number, b: number | boolean) {
-	if (typeof a === typeof b) {
-		console.log(typeof a);
-	} else {
-		console.log("not right");
-	}
-}
-multiple(1, 2);
+literalType("someUrl", method as "post");
