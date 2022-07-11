@@ -1,10 +1,17 @@
-type httpMethod = "post" | "get";
-
-function literalType(url: string, method: httpMethod) {
-	console.log(url, method);
+interface UserName {
+	name: string;
 }
-literalType("http://...", "post");
 
-let method = "post";
+interface UserAge {
+	age: number;
+}
 
-literalType("someUrl", method as "post");
+interface User extends UserName, UserAge {
+	userCreatedAt: Date;
+}
+
+let user: User = {
+	name: "Yuri",
+	age: 26,
+	userCreatedAt: new Date(),
+};
