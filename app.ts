@@ -1,15 +1,29 @@
-type voidFunc = () => void;
+let input: unknown;
 
-const f: voidFunc = () => {
-	return true;
-};
+input = 55;
 
-const skills = ["dev", "devOps"];
+function toNum(num: unknown): number | void {
+	if (typeof num === "number") {
+		console.log(1);
 
-const user = {
-	s: ["s"],
-};
+		return ++num;
+	} else {
+		num;
+	}
+}
 
-skills.forEach((skill) => user.s.push(skill));
+let a = toNum(input);
+console.log("a", a);
 
-console.log("user", user);
+async function getData() {
+	try {
+		await fetch("");
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		}
+	}
+}
+
+type res1 = unknown | string;
+type res2 = unknown & string;

@@ -1,10 +1,14 @@
 "use strict";
-// const f: voidFunc = () => {
-// 	return true;
-// };
-const skills = ["dev", "devOps"];
-const user = {
-    s: ["s"],
-};
-skills.forEach((skill) => user.s.push(skill));
-console.log("user", user);
+let input;
+input = 55;
+function toNum(num) {
+    if (typeof num === "number") {
+        console.log(1);
+        return ++num;
+    }
+    else {
+        num;
+    }
+}
+let a = toNum(input);
+console.log("a", a);
