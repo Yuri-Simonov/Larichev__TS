@@ -1,7 +1,10 @@
 "use strict";
-function literalType(url, method) {
-    console.log(url, method);
-}
-literalType("http://...", "post");
-let method = "post";
-literalType("someUrl", method);
+// const f: voidFunc = () => {
+// 	return true;
+// };
+const skills = ["dev", "devOps"];
+const user = {
+    s: ["s"],
+};
+skills.forEach((skill) => user.s.push(skill));
+console.log("user", user);

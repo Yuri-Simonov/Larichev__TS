@@ -1,39 +1,15 @@
-interface UserName {
-	name?: string;
-}
+type voidFunc = () => void;
 
-interface UserAge {
-	age?: number;
-}
-
-interface User extends UserName, UserAge {
-	userCreatedAt?: Date;
-}
-
-let user: User = {
-	name: "Yuri",
-	age: 26,
-	userCreatedAt: new Date(),
+const f: voidFunc = () => {
+	return true;
 };
 
-function multuply(first: number, second?: number): number {
-	if (!second) {
-		return first * first;
-	}
-	return first * second;
-}
+const skills = ["dev", "devOps"];
 
-interface UserPro {
-	name: string;
-	password?: {
-		type: string;
-	};
-}
+const user = {
+	s: ["s"],
+};
 
-function testFunc(user: UserPro) {
-	const t = user.password?.type;
-}
+skills.forEach((skill) => user.s.push(skill));
 
-function testFunc2(param?: number) {
-	const t = param ?? multuply(5);
-}
+console.log("user", user);
