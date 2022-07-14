@@ -1,11 +1,3 @@
-let a = 5;
-let b: string = a.toString();
-console.log("b", b);
-
-let c = "67";
-let d: number = parseInt(c);
-console.log("d", d);
-
 interface User {
 	name: string;
 	password: string;
@@ -21,12 +13,22 @@ interface Admin {
 	role: string;
 }
 
-function userToAdmin(user: User): Admin {
-	return {
-		name: user.name,
-		role: "junior",
-	};
+function isString(x: string | number): x is string {
+	return typeof x === "string";
 }
 
-const admin: Admin = userToAdmin(user);
-console.log("admin", admin);
+function logId(id: string | number) {
+	if (isString(id)) {
+		console.log(id);
+	} else {
+		console.log(id);
+	}
+}
+
+function isAdmin(user: User | Admin): user is Admin {
+	return "role" in user;
+}
+
+function isAdminAlternative(user: User | Admin): user is Admin {
+	return (user as Admin).role !== undefined;
+}
