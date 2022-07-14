@@ -1,14 +1,7 @@
 "use strict";
-let input;
-input = 55;
-function toNum(num) {
-    if (typeof num === "number") {
-        console.log(1);
-        return ++num;
-    }
-    else {
-        num;
-    }
+function retData(id) {
+    // throw new Error();
+    while (true) { }
 }
-let a = toNum(input);
-console.log("a", a);
+let a = retData("dsa");
+console.log(a);

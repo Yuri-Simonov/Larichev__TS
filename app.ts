@@ -1,29 +1,16 @@
-let input: unknown;
+type paymentAction = "refund" | "checkout";
 
-input = 55;
+function processAction(action: paymentAction) {
+	switch (action) {
+		case "refund":
+			//..
+			break;
+		case "checkout":
+			//..
+			break;
 
-function toNum(num: unknown): number | void {
-	if (typeof num === "number") {
-		console.log(1);
-
-		return ++num;
-	} else {
-		num;
+		default:
+			const _: never = action;
+			throw new Error("нет такого action");
 	}
 }
-
-let a = toNum(input);
-console.log("a", a);
-
-async function getData() {
-	try {
-		await fetch("");
-	} catch (error) {
-		if (error instanceof Error) {
-			console.log(error.message);
-		}
-	}
-}
-
-type res1 = unknown | string;
-type res2 = unknown & string;
