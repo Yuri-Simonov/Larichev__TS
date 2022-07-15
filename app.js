@@ -1,19 +1,10 @@
 "use strict";
-let a = 5;
-let b = a.toString();
-console.log("b", b);
-let c = "67";
-let d = parseInt(c);
-console.log("d", d);
-const user = {
-    name: "Vasya",
-    password: "12345",
-};
-function userToAdmin(user) {
-    return {
-        name: user.name,
-        role: "junior",
-    };
+const a = { name: "fsd" };
+assertsUser(a);
+function assertsUser(obj) {
+    if (typeof obj === "object" && !!obj && "name" in obj) {
+        console.log(1);
+        return;
+    }
+    throw new Error("Не пользователь");
 }
-const admin = userToAdmin(user);
-console.log("admin", admin);
