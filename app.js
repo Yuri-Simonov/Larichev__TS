@@ -1,10 +1,13 @@
 "use strict";
-const a = { name: "fsd" };
-assertsUser(a);
-function assertsUser(obj) {
-    if (typeof obj === "object" && !!obj && "name" in obj) {
-        console.log(1);
-        return;
+class User {
+    constructor(name) {
+        this.name = name;
     }
-    throw new Error("Не пользователь");
 }
+const user = new User("Vasya");
+console.log("user", user);
+class Admin {
+}
+const admin = new Admin();
+admin.role = 1;
+console.log("admin", admin);
