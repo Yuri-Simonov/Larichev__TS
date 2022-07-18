@@ -1,19 +1,28 @@
 "use strict";
-class User {
-    constructor(ageOrName, age) {
-        if (typeof ageOrName === "string") {
-            this.name = ageOrName;
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus[PaymentStatus["Holded"] = 0] = "Holded";
+    PaymentStatus[PaymentStatus["Reserved"] = 1] = "Reserved";
+    PaymentStatus[PaymentStatus["Unholded"] = 2] = "Unholded";
+})(PaymentStatus || (PaymentStatus = {}));
+class Payment {
+    constructor(id) {
+        this.status = PaymentStatus.Holded;
+        this.createdAt = new Date();
+        this.id = id;
+    }
+    getPaymentLifeTime() {
+        return this.createdAt.getTime() - new Date().getTime();
+    }
+    unholdPayment() {
+        if (this.status === PaymentStatus.Reserved) {
+            throw new Error("Платеж уже прошел! Его нельзя отменить!");
         }
-        else if (typeof ageOrName === "number") {
-            this.age = ageOrName;
-        }
-        if (typeof age === "number") {
-            this.age = age;
-        }
+        this.status = PaymentStatus.Unholded;
+        this.updatedAt = new Date();
     }
 }
-let user = new User();
-let user2 = new User("Henrik");
-let user3 = new User(23);
-let user4 = new User("Petr", 22);
-console.log("user4", user4);
+let payment = new Payment(1);
+payment.unholdPayment();
+let time = payment.getPaymentLifeTime();
+console.log("time", time);
