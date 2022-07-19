@@ -1,46 +1,22 @@
-interface Payload {
-	sum: number;
-	from: number;
-	to: number;
-}
+class User {
+	skills: string[] = [];
 
-enum StatusPayload {
-	Success = "success",
-	Failed = "failed",
-}
-
-interface IPaymentReq extends Payload {}
-
-interface IPaymentSuccess extends Payload {
-	databaseId: number;
-}
-
-interface IPaymentFailed {
-	errorMessage: string;
-	errorCode: number;
-}
-
-interface IResponseSuccess {
-	status: StatusPayload.Success;
-	data: IPaymentSuccess;
-}
-
-interface IResponseFailed {
-	status: StatusPayload.Failed;
-	data: IPaymentFailed;
-}
-
-type Res = IResponseSuccess | IResponseFailed;
-type func = (res: Res) => number;
-
-function isSuccess(res: Res): res is IResponseSuccess {
-	return (res as IResponseSuccess).status === StatusPayload.Success;
-}
-
-function someFunc(res: Res): number {
-	if (isSuccess(res)) {
-		return res.data.databaseId;
-	} else {
-		throw new Error(res.data.errorMessage);
+	addSkill(skill: string): void;
+	addSkill(skills: string[]): void;
+	addSkill(skillOrSkils: string | string[]): void {
+		if (typeof skillOrSkils === "string") {
+			this.skills = this.skills.concat(skillOrSkils);
+		}
+		if (Array.isArray(skillOrSkils)) {
+			this.skills = this.skills.concat(skillOrSkils);
+		}
 	}
 }
+
+let user1 = new User();
+user1.addSkill("one skill");
+console.log("user1", user1);
+
+let user2 = new User();
+user2.addSkill(["one skill", "two skill"]);
+console.log("user2", user2);
