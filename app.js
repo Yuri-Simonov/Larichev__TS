@@ -1,28 +1,26 @@
 "use strict";
-var PaymentStatus;
-(function (PaymentStatus) {
-    PaymentStatus[PaymentStatus["Holded"] = 0] = "Holded";
-    PaymentStatus[PaymentStatus["Reserved"] = 1] = "Reserved";
-    PaymentStatus[PaymentStatus["Unholded"] = 2] = "Unholded";
-})(PaymentStatus || (PaymentStatus = {}));
-class Payment {
-    constructor(id) {
-        this.status = PaymentStatus.Holded;
-        this.createdAt = new Date();
-        this.id = id;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+class SomeUser {
+    get login() {
+        return this._login;
     }
-    getPaymentLifeTime() {
-        return this.createdAt.getTime() - new Date().getTime();
+    set login(l) {
+        this._login = l + "new login";
     }
-    unholdPayment() {
-        if (this.status === PaymentStatus.Reserved) {
-            throw new Error("Платеж уже прошел! Его нельзя отменить!");
-        }
-        this.status = PaymentStatus.Unholded;
-        this.updatedAt = new Date();
+    createPassword() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //password
+        });
     }
 }
-let payment = new Payment(1);
-payment.unholdPayment();
-let time = payment.getPaymentLifeTime();
-console.log("time", time);
+let user = new SomeUser();
+user.login = "create ";
+console.log("user", user);

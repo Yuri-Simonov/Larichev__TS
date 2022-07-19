@@ -1,33 +1,20 @@
-enum PaymentStatus {
-	Holded,
-	Reserved,
-	Unholded,
-}
+class SomeUser {
+	_login: string;
+	password: string;
+	createdAt: Date;
 
-class Payment {
-	id: number;
-	status: PaymentStatus = PaymentStatus.Holded;
-	createdAt: Date = new Date();
-	updatedAt: Date;
-
-	constructor(id: number) {
-		this.id = id;
+	get login() {
+		return this._login;
+	}
+	set login(l: string) {
+		this._login = l + "new login";
 	}
 
-	getPaymentLifeTime(): number {
-		return this.createdAt.getTime() - new Date().getTime();
-	}
-
-	unholdPayment(): void {
-		if (this.status === PaymentStatus.Reserved) {
-			throw new Error("Платеж уже прошел! Его нельзя отменить!");
-		}
-		this.status = PaymentStatus.Unholded;
-		this.updatedAt = new Date();
+	async createPassword() {
+		//password
 	}
 }
 
-let payment = new Payment(1);
-payment.unholdPayment();
-let time = payment.getPaymentLifeTime();
-console.log("time", time);
+let user = new SomeUser();
+user.login = "create ";
+console.log("user", user);
