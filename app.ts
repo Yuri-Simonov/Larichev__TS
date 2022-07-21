@@ -1,10 +1,31 @@
-class User {
-	static userName = "Yuri";
+class Payment {
+	private date: Date = new Date();
 
-	changeName() {
-		User.userName = "Not Yuri";
+	getDate(this: Payment) {
+		return this.date;
+	}
+
+	getDateArrow = () => {
+		return this.date;
+	};
+}
+
+const p = new Payment();
+
+const user = {
+	id: 1,
+	paymentDate: p.getDate.bind(p),
+	paymentDateArrow: p.getDateArrow,
+};
+
+// console.log(user.paymentDate());
+// console.log(user.paymentDateArrow());
+
+class PaymentExtend extends Payment {
+	save() {
+		return this.getDateArrow();
 	}
 }
 
-console.log(User.userName); // Yuri
-console.log(new User().changeName()); // undefined
+const newPayment = new PaymentExtend();
+console.log(newPayment.save());
