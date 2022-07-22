@@ -1,27 +1,21 @@
 "use strict";
-class Payment {
-    constructor() {
-        this.date = new Date();
-        this.getDateArrow = () => {
-            return this.date;
-        };
+class UserBuilder {
+    setName(name) {
+        this.name = name;
+        return this;
     }
-    getDate() {
-        return this.date;
+    isAdmin() {
+        return this instanceof AdminBuilder;
     }
 }
-const p = new Payment();
-const user = {
-    id: 1,
-    paymentDate: p.getDate.bind(p),
-    paymentDateArrow: p.getDateArrow,
-};
-// console.log(user.paymentDate());
-// console.log(user.paymentDateArrow());
-class PaymentExtend extends Payment {
-    save() {
-        return this.getDateArrow();
-    }
+class AdminBuilder extends UserBuilder {
 }
-const newPayment = new PaymentExtend();
-console.log(newPayment.save());
+const user1 = new UserBuilder().setName("Yo");
+const user2 = new AdminBuilder().setName("Ju");
+const user = new AdminBuilder().setName("Leo");
+if (user.isAdmin()) {
+    console.log(user.name + " admin");
+}
+else {
+    console.log(user.name + " user");
+}

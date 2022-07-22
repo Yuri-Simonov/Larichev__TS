@@ -1,31 +1,27 @@
-class Payment {
-	private date: Date = new Date();
+class UserBuilder {
+	name: string;
 
-	getDate(this: Payment) {
-		return this.date;
+	setName(name: string): this {
+		this.name = name;
+		return this;
 	}
 
-	getDateArrow = () => {
-		return this.date;
-	};
-}
-
-const p = new Payment();
-
-const user = {
-	id: 1,
-	paymentDate: p.getDate.bind(p),
-	paymentDateArrow: p.getDateArrow,
-};
-
-// console.log(user.paymentDate());
-// console.log(user.paymentDateArrow());
-
-class PaymentExtend extends Payment {
-	save() {
-		return this.getDateArrow();
+	isAdmin(): this is AdminBuilder {
+		return this instanceof AdminBuilder;
 	}
 }
 
-const newPayment = new PaymentExtend();
-console.log(newPayment.save());
+class AdminBuilder extends UserBuilder {
+	roles: string;
+}
+
+const user1 = new UserBuilder().setName("Yo");
+const user2 = new AdminBuilder().setName("Ju");
+
+const user: UserBuilder | AdminBuilder = new UserBuilder().setName("Leo");
+
+if (user.isAdmin()) {
+	console.log(user.name + " admin");
+} else {
+	console.log(user.name + " user");
+}
