@@ -1,27 +1,20 @@
-class UserBuilder {
-	name: string;
+abstract class Controller {
+	abstract handle(req: any): void;
 
-	setName(name: string): this {
-		this.name = name;
-		return this;
-	}
-
-	isAdmin(): this is AdminBuilder {
-		return this instanceof AdminBuilder;
+	handleWithLogs() {
+		console.log("start");
+		this.handle("request");
+		console.log("end");
 	}
 }
 
-class AdminBuilder extends UserBuilder {
-	roles: string;
+// let newController = new Controller(); - нельзя создать экземпляр абстрактного класса.
+
+class UserController extends Controller {
+	handle(req: any): void {
+		console.log("somebody log");
+	}
 }
 
-const user1 = new UserBuilder().setName("Yo");
-const user2 = new AdminBuilder().setName("Ju");
-
-const user: UserBuilder | AdminBuilder = new UserBuilder().setName("Leo");
-
-if (user.isAdmin()) {
-	console.log(user.name + " admin");
-} else {
-	console.log(user.name + " user");
-}
+let newUserController = new UserController();
+newUserController.handleWithLogs();
